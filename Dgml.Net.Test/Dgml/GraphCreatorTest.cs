@@ -25,7 +25,7 @@ namespace Dgml.Net.Test
             Graph graph = CreateGraph(inputGraph);
 
             Assert.IsNotNull(graph);
-            MatchGraph(inputGraph, graph);
+            Asserter.MatchCollectionGraph(inputGraph, graph);
         }
 
         [TestMethod]
@@ -46,7 +46,7 @@ namespace Dgml.Net.Test
             };
 
             Assert.IsNotNull(graph);
-            MatchGraph(expectedGraph, graph);
+            Asserter.MatchCollectionGraph(expectedGraph, graph);
         }
 
         [TestMethod]
@@ -67,7 +67,7 @@ namespace Dgml.Net.Test
             };
 
             Assert.IsNotNull(graph);
-            MatchGraph(expectedGraph, graph);
+            Asserter.MatchCollectionGraph(expectedGraph, graph);
         }
 
         private Graph CreateGraph(IDictionary<string, ICollection<string>> inputGraph, bool incomingLinks = false)
@@ -82,21 +82,6 @@ namespace Dgml.Net.Test
             NodeCreator<CustomNode> creator = node => new Node(node.Name);
 
             return nodes.ToGraph(creator, resolver, incomingLinks);
-        }
-
-        private void MatchGraph(IDictionary<string, ICollection<string>> expectedGraph, Graph actualGraph)
-        {
-            Assert.AreEqual(expectedGraph.Keys.Count, actualGraph.Nodes.Length);
-            Assert.AreEqual(expectedGraph.Values.SelectMany(v => v).Count(), actualGraph.Links.Length);
-
-            foreach (string nodeName in expectedGraph.Keys)
-            {
-                Assert.IsNotNull(actualGraph.Nodes.Single(n => n.Id == nodeName));
-                foreach (string link in expectedGraph[nodeName])
-                {
-                    Assert.IsNotNull(actualGraph.Links.Single(node => node.Source == nodeName && node.Target == link));
-                }
-            }
         }
 
         private class CustomNode
