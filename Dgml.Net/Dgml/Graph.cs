@@ -63,6 +63,22 @@ namespace Dgml.Net
             return dgml.ToString();
         }
 
+
+        public static Graph FromString(string dgml)
+        {
+            XmlRootAttribute root = new XmlRootAttribute("DirectedGraph")
+            {
+                Namespace = "http://schemas.microsoft.com/vs/2009/dgml",
+            };
+            XmlSerializer serializer = new XmlSerializer(typeof(Graph), root);
+            Graph result;
+            using (TextReader reader = new StringReader(dgml))
+            {
+                result = (Graph)serializer.Deserialize(reader);
+            }
+            return result;
+        }
+
         internal class Utf8StringWriter : StringWriter
         {
             public override Encoding Encoding => Encoding.UTF8;
