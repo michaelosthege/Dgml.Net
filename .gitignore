@@ -20,4 +20,5 @@
 
 # Test files
 *.testsettings
-
+TestResults/
+/.vs/Dgml.Net/v15/sqlite3

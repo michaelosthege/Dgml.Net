@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.4</TargetFramework>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Dgml.Net.snk</AssemblyOriginatorKeyFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Michael Osthege, Nayan Shah</Authors>
+    <Company />
+    <Description>Provides an API for handling Directed Graph documents (DGML)</Description>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/nayanshah/UtilsDotNet/master/LICENSE</PackageLicenseUrl>
+    <PackageIconUrl>https://github.com/nayanshah/UtilsDotNet/raw/master/res/128/UtilsDotNet.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/nayanshah/UtilsDotNet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/nayanshah/UtilsDotNet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>dgml</PackageTags>
+    <PackageReleaseNotes>1.0.0
++ migrated to .NET Standard 1.4</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Xml.XmlSerializer" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>
